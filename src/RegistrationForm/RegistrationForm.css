@@ -1,0 +1,62 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    max-width: 380px;
+    margin: 0 auto;
+}
+.main-page__registration-block{
+
+}
+.registration-slogan{
+text-align: center;
+margin-bottom: 50px;
+}
+.form__input{
+    padding: 14px 16px;
+    font-size: 16px;
+    line-height: 26px;
+    border-radius: 4px;
+    border: 1px solid #d0cfcf;
+    outline: none;
+}
+.form__input.error{
+    border: 2px solid var(--border-error-color);
+}
+.form__name, .form__email {
+    margin-bottom: 50px;
+}
+.form__phone{
+    margin-bottom: 43px;
+}
+.form__paragraph{
+    margin-bottom: 11px;
+}
+.form__radio-item{
+display: none;
+}
+.form__radio-button{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.form__radio-button:not(:last-child){
+    margin-bottom: 7px;
+}
+.form__radio-button:last-child{
+    margin-bottom: 47px;
+}
+.form__radio-button:before{
+    position: absolute;
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-image: url('../assets/Ellipse\ 27.svg');
+    background-position: center;
+   
+
+}
+.form__position-name{
+    display: inline-block;
+    margin-left: 32px;
+    font-size: 16px;
+}

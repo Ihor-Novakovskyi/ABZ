@@ -1,0 +1,31 @@
+.card{
+    display: flex;
+    max-width: 370px;
+    flex-direction: column;
+    min-width: 282px;
+    box-sizing: border-box;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow: hidden;
+}
+.card__user-information{
+    text-align: center;
+}
+.card__user-image{
+    height: 70px;
+    width: 70px;
+    object-position: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.card__user-item{
+line-height: 26px;
+}
+@media (width >= 1027px){
+    .card {
+        min-width: 320px;
+    }
+}

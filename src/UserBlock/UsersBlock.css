@@ -1,0 +1,25 @@
+.card-block {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+.card-block__cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+}
+.card-block__slogan{
+    text-align: center;
+}
+.card-block{
+    margin-bottom: 140px;
+}
+
+
+@media (width <= 1024px) {
+    .card-block{
+        max-width: 904px;
+        padding: 0 13px;
+    }
+}

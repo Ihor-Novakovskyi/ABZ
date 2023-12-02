@@ -1,25 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
-
-function App() {
+import Header from './Header/Header';
+import UsersBlock from './UserBlock/UsersBlock';
+import RegistrationForm from './RegistrationForm/RegistrationForm';
+import { useEffect, useState } from 'react';
+function MainPage() {
+  const [token, setToken] = useState('');
+  const [update, setUpdate] = useState(false);
+  useEffect(() => { 
+     fetch('https://frontend-test-assignment-api.abz.agency/api/v1/token')
+      .then(response => response.json())
+      .then(response => setToken(response.token))
+  }, [])
+  console.log(token)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className='main-page'>
+      <Header />
+      <UsersBlock token={ token } update={update} />
+      <RegistrationForm token={token}/>
+    </main>
   );
 }
 
-export default App;
+export default MainPage;

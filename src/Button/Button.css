@@ -1,0 +1,23 @@
+.button{
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+    color: black;
+    justify-content: center;
+    width: 100px;
+    height: 34px;
+    background-color: var(--primary-color);
+    border-radius: 80px;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+.button:hover{
+    background-color: var(--hover-color);
+}
+.button.disable {
+    background-color: var(--disable-color);
+    cursor: auto;
+};
