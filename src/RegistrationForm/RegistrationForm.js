@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import setOptions from '../services/serverApi';
 import regularExpression from './regularExp';
 import Button from '../Button/Button';
+import validation from './validation';
 export default function RegistrationForm(props) {
     const { token, setRegistraion } = props;
     const [load, setLoad] = useState(true);
@@ -12,59 +13,15 @@ export default function RegistrationForm(props) {
     const [data, setData] = useState();
     const { url, options } = setOptions({ token, action: "GET/positions" });
     const [activeIdElement, setActiveIdElement] = useState(null);
-    const [validateData, setValidateData] = useState({ email: '', phone: '', name: '', photo: '', position_id: '' });
-    const [{ email, phone, name, photo }, setErrorValidate] = useState({ email: false, phone: false, name: false, photo: false });
+    const { validateDataInfo, loadImage, setValidateData, validateData, setErrorValidate, validateError } = validation();
+    const { email, phone, name, photo } = validateError;
+    const [ fieldInput, setFieldInput ] = useState({ name: '', phone: '', email: '' });
     const [disabled, setDisabled] = useState('disabled');
     let renderInfo = null;
 
-    const loadImage = (e) => {
-        const file = e.target.files[0];
-        const sizeBytes = file.size;
-        if (sizeBytes <= 5 * 1024 * 1024) {
-            const img = new Image();
-            img.src = URL.createObjectURL(file);
-            img.onload = (e) => {
-                const widthImage = e.target.width;
-                const heightImage = e.target.height;
-                if (widthImage === 70 && heightImage === 70) {
-                    setValidateData((prev) => ({ ...prev, photo: file }));
-                    setErrorValidate((prevValidate) => ({ ...prevValidate, photo: false }))
-                    return
-                }
-                setErrorValidate((prevValidate) => ({ ...prevValidate, photo: true }))
-            };
-            return;
-        }
-        setErrorValidate((prevValidate) => ({ ...prevValidate, photo: true }))
-    }
-    const validateDataInfo = (e) => {
-        const field = e.target;
-        const data = field.value;
-        const name = field.name;
-        switch (name) {
-            case 'name':
-                if (data.length > 2 && data.length <= 60) {
-                    setValidateData((prev) => ({ ...prev, name: data }));
-                    setErrorValidate((prevValidate) => ({ ...prevValidate, name: false }))
-                    return
-                }
-                setErrorValidate((prevValidate) => ({ ...prevValidate, name: true }))
-                return
-            case 'email':
-                const { regExpEmail } = regularExpression;
-                const resultEmail = regExpEmail.test(data.toLowerCase());
-                setValidateData((prev) => ({ ...prev, email: resultEmail ? data : '' }));
-                setErrorValidate((prevValidate) => ({ ...prevValidate, email: resultEmail ? false : true }))
-                return;
-            case 'phone':
-                const { regExpPhone } = regularExpression;
-                const resultPhone = regExpPhone.test(data)
-                setValidateData((prev) => ({ ...prev, phone: resultPhone ? data : '' }));
-                setErrorValidate((prevValidate) => ({ ...prevValidate, phone: resultPhone ? false : true }))
-                return;
-        }
-
-
+    const onChacnge = (e) => { 
+        setErrorValidate((prev) => ({ ...prev, [e.target.name]: false }));
+        setFieldInput((prev) => ({...prev, [e.target.name]: e.target.value}))
     }
     const postData = (e) => {
         e.preventDefault();
@@ -122,7 +79,9 @@ export default function RegistrationForm(props) {
                 <form onSubmit={ postData } className="form">
                     <label className={ `form__name-label ${name ? 'error' : ''}`}>
                         <input
+                            onChange={onChacnge}
                             onBlur={ validateDataInfo }
+                            value={fieldInput.name}
                             required="required"
                             name="name"
                             type="text"
@@ -132,7 +91,9 @@ export default function RegistrationForm(props) {
                     </label>
                     <label className={`form__email-label ${email ? 'error' : ''}`}>
                         <input
+                            onChange={onChacnge}
                             onBlur={ validateDataInfo }
+                            value={fieldInput.email}
                             required="required"
                             name="email"
                             type="text"
@@ -142,7 +103,9 @@ export default function RegistrationForm(props) {
                     </label>
                     <label className={ `form__phone-label ${phone ? 'error' : ''}` }>
                     <input
+                        onChange={onChacnge}
                         onBlur={ validateDataInfo }
+                        value={fieldInput.phone}
                         required="required"
                         name="phone"
                         type="text"
