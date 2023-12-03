@@ -1,11 +1,4 @@
 .button{
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    line-height: 26px;
-    font-weight: 400;
-    color: black;
-    justify-content: center;
     width: 100px;
     height: 34px;
     background-color: var(--primary-color);
@@ -17,7 +10,10 @@
 .button:hover{
     background-color: var(--hover-color);
 }
-.button.disable {
+.button:active{
+    scale: 1.1;
+}
+.button.disabled {
     background-color: var(--disable-color);
-    cursor: auto;
+    scale: 1;
 };

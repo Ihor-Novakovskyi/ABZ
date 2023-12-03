@@ -12,17 +12,17 @@ export default function Card(props) {
                 {name}
             </span>
             <div className="card__user-information">
-                <span className="card__user-item">
+                <p className="card__user-item">
                     {position}
-                </span>
-                <br/>
-                <span className="card__user-item">
+                </p>
+                {/* <br/> */}
+                <p className="card__user-item">
                     {email}
-                </span>
-                <br />
-                <span className="card__user-item">
+                </p>
+                {/* <br /> */}
+                <p className="card__user-item">
                     {phone}
-                </span>
+                </p>
             </div>
         </div>
     )

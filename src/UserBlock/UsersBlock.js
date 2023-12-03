@@ -5,8 +5,8 @@ import { useState, useEffect } from 'react';
 import useGetUsers from '../services/useGetUsersData';
 import Spinner from '../Spinner/Loading';
 export default function UsersBlock(props) {
-    const { token } = props;
-    const {users, error, load, setPages, setLoad, totalPages, pages} = useGetUsers({token})
+    const { token, update } = props;
+    const {users, load, setPages, totalPages, pages} = useGetUsers({token, update})
     const currentInfo = !!users.length ?
         users.map(el => <Card key={el.id} { ...el } />) :
         <Spinner/>;
@@ -19,7 +19,6 @@ export default function UsersBlock(props) {
             } 
             return prevPages;
         })
-        // setLoad(false);
     }
     return (
         <div className='card-block'>
@@ -36,7 +35,7 @@ export default function UsersBlock(props) {
 
             <Button 
                 label="Show more" 
-                actionClick={ loadUsers } 
+                onClick={ loadUsers } 
                 className={totalPages ===  pages ? 'disable' : ''} />
         </div>
     )

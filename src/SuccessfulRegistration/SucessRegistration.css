@@ -1,0 +1,22 @@
+.main-page__registration{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 0 13px;
+    align-items: center;
+    margin-bottom: 100px;
+}
+.main-page__slogan-sucess{
+    text-align: center;
+    margin-bottom: 100px;
+}
+.main-page__registraion-sucess-image{
+    margin: 0 auto;
+    max-width: 1024px;
+
+}
+.main-page__image-item{
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}

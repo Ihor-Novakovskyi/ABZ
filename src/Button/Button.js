@@ -1,11 +1,11 @@
 import './Button.css'
 export default function Button(props) {
-    const { label, href, className, actionClick = null } = props;
+    const { label, href, className, onClick = null } = props;
     return (
-        <a href={ href } onClick={actionClick}>
-            <div className={ `button ${className}` }>
+        <a href={ href } onClick={onClick}>
+            <button className={ `button ${className}` } disabled={className === 'disabled'? true : false}>
                 { label }
-            </div>
+            </button>
         </a>
     )
 }

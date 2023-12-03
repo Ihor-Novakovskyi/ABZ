@@ -8,9 +8,13 @@
     flex-wrap: wrap;
     justify-content: center;
     margin: 0 auto;
+    gap: 29px;
+    margin-bottom: 50px;
+
 }
 .card-block__slogan{
     text-align: center;
+    margin-bottom: 50px;
 }
 .card-block{
     margin-bottom: 140px;
@@ -21,5 +25,15 @@
     .card-block{
         max-width: 904px;
         padding: 0 13px;
+    }
+}
+@media (width <= 768px){
+    .card-block__cards{
+        gap: 16px;
+    }
+}
+@media (width <= 606px){
+    .card-block__cards{
+        gap: 20px;
     }
 }

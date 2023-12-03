@@ -2,6 +2,12 @@ import './Header.css';
 import logo from '../assets/Logo.svg';
 import Button from '../Button/Button';
 export default function Header() { 
+    const goToUsers = () => { 
+        document.querySelector('.card-block__slogan').scrollIntoView({ block: "center", behavior: "smooth" })
+    }
+    const gotoForm = () => { 
+        document.querySelector('.form__name').scrollIntoView({ block: "center", behavior: "smooth" })
+    }
     return (
         <>
             <div className="main-page__header">
@@ -9,8 +15,8 @@ export default function Header() {
                     <img src={logo} alt="logo" className="logo__item" />
                 </div>
                 <div className="header-button__wrapper">
-                <Button label="Users" href='/' ></Button>
-                <Button label="Sign Up" href='/'></Button>
+                <Button label="Users" onClick={goToUsers}></Button>
+                    <Button label="Sign Up" onClick={gotoForm}></Button>
                 </div>
             </div>
             <div className="main-page__information-block">
@@ -21,11 +27,7 @@ export default function Header() {
                 <p className="main-page__main-text">
                 What defines a good front-end developer is one that has skilled knowledge of HTML, CSS, JS with a vast understanding of User design thinking as they'll be building web interfaces with accessibility in mind. They should also be excited to learn, as the world of Front-End Development keeps evolving.
                 </p>
-                <a href="/">
-                    <div className="button main-page__header-button">
-                        Sign Up
-                    </div>
-                </a>
+                <Button onClick={goToUsers} label="Sign Up"/>
             </div>
         </>
     )

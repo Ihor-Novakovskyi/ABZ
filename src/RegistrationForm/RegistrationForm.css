@@ -1,62 +1,181 @@
-.form{
+.form {
     display: flex;
     flex-direction: column;
     max-width: 380px;
     margin: 0 auto;
+    padding: 0 13px;
+    margin-bottom: 100px;
 }
-.main-page__registration-block{
 
+.registration-slogan {
+    text-align: center;
+    margin-bottom: 50px;
 }
-.registration-slogan{
-text-align: center;
-margin-bottom: 50px;
-}
-.form__input{
+
+.form__input {
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
     padding: 14px 16px;
     font-size: 16px;
     line-height: 26px;
     border-radius: 4px;
     border: 1px solid #d0cfcf;
     outline: none;
+    background-color: var(--bg-color);
 }
-.form__input.error{
+
+.form__input.error {
     border: 2px solid var(--border-error-color);
 }
-.form__name, .form__email {
+.form__name-label{
+    position: relative;
+}
+.form__name-label.error:after{
+    content: 'Error: min name length 2, max length 60';
+    position: absolute;
+    top: 58px;
+    left: 16px;
+    color: var(--border-error-color);
+    font-size: 12px;
+    line-height: 14px;
+    font-style: normal;
+} 
+.form__email-label{
+    position: relative;
+}
+.form__email-label.error:after{
+    content: 'Error: incorrect email';
+    position: absolute;
+    top: 58px;
+    left: 16px;
+    color: var(--border-error-color);
+    font-size: 12px;
+    line-height: 14px;
+    font-style: normal;
+}
+.form__phone-label{
+    position: relative;
+}
+.form__phone-label.error:after{
+    content: 'Error: incorrect phone';
+    position: absolute;
+    top: 58px;
+    left: 16px;
+    color: var(--border-error-color);
+    font-size: 12px;
+    line-height: 14px;
+    font-style: normal;
+}
+
+.form__name,
+.form__email {
+    
     margin-bottom: 50px;
 }
-.form__phone{
+
+.form__phone {
     margin-bottom: 43px;
 }
-.form__paragraph{
+
+.form__paragraph {
     margin-bottom: 11px;
 }
-.form__radio-item{
-display: none;
+
+.form__radio-item {
+    display: none;
 }
-.form__radio-button{
+
+.form__radio-button {
     position: relative;
     display: flex;
     align-items: center;
 }
-.form__radio-button:not(:last-child){
+
+.form__radio-button:not(:last-child) {
     margin-bottom: 7px;
+
 }
-.form__radio-button:last-child{
+
+.form__button-wrapper {
     margin-bottom: 47px;
 }
-.form__radio-button:before{
+
+.form__radio-button:before {
     position: absolute;
     content: "";
     width: 20px;
     height: 20px;
     background-image: url('../assets/Ellipse\ 27.svg');
     background-position: center;
-   
+
 
 }
-.form__position-name{
+
+.form__radio-button.active:before {
+    background-image: url('../assets/activeradio.svg');
+}
+
+.form__position-name {
     display: inline-block;
     margin-left: 32px;
     font-size: 16px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.form__load-label {
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid var(--grey);
+    background: var(--bg-color);
+    padding: 14px 0 14px 99px;
+    width: 100%;
+}
+
+.form__load-label.error {
+    border-color: var(--border-error-color);
+
+}
+
+.form__load-label:before {
+    content: 'Load';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 83px;
+    height: 100%;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px 0 0 4px;
+    border-color: var(--black);
+    background-color: var(--bg-color);
+    transition: all 0.3s linear;
+}
+
+.form__load-label.error:before {
+    border-color: var(--border-error-color);
+}
+.form__load-label.error:after {
+    content: 'Error: loaded img size more then 70*70';
+    position: absolute;
+    bottom: -18px;
+    left: 16px;
+    color: var(--border-error-color);
+    font-size: 12px;
+    line-height: 14px;
+    font-style: normal;
+}
+.form__input-image {
+    padding-left: 100px;
+}
+.form__load-image{
+    margin-bottom: 50px;
 }
