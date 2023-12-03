@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import fetchData from './fetchData.js';
+import request from './request.js';
 import setOptions from './serverApi.js';
 
 export default function useGetUsers({ token, update}) {
@@ -12,7 +12,7 @@ export default function useGetUsers({ token, update}) {
         useEffect(() => {
             if (token && pages !== 1) {
                 setLoad(true)
-                fetchData({ url, ...options })
+                request({ url, ...options })
                     .then((data => { 
                         setContent((prevData) => {
                             return { ...data, users: [...prevData.users, ...data.users] }
@@ -27,7 +27,7 @@ export default function useGetUsers({ token, update}) {
         }, [pages])
         useEffect(() => {
             if (token) { 
-                fetchData({ url, ...options })
+                request({ url, ...options })
                     .then(data => { 
                         setTotalPages(data.total_pages);
                         setContent(data);
@@ -38,7 +38,7 @@ export default function useGetUsers({ token, update}) {
         }, [token]);
         useEffect(() => {
             if (update) { 
-                fetchData({ url, ...options })
+                request({ url, ...options })
                 .then((data => setContent(data)))
                 .catch((dataError) => setError(dataError))
             }

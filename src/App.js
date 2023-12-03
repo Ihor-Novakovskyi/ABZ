@@ -13,7 +13,6 @@ function MainPage() {
       .then(response => response.json())
       .then(response => setToken(response.token))
   }, [])
-  console.log(token)
   return (
     <main className='main-page'>
       <Header />

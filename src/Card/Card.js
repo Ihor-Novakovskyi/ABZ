@@ -15,11 +15,9 @@ export default function Card(props) {
                 <p className="card__user-item">
                     {position}
                 </p>
-                {/* <br/> */}
                 <p className="card__user-item">
                     {email}
                 </p>
-                {/* <br /> */}
                 <p className="card__user-item">
                     {phone}
                 </p>

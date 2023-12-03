@@ -1,5 +1,5 @@
 import './RegistrationForm.css';
-import fetchData from '../services/fetchData';
+import request from '../services/request';
 import Spinner from '../Spinner/Loading';
 import { useState, useEffect } from 'react';
 import setOptions from '../services/serverApi';
@@ -16,7 +16,6 @@ export default function RegistrationForm(props) {
     const [{ email, phone, name, photo }, setErrorValidate] = useState({ email: false, phone: false, name: false, photo: false });
     const [disabled, setDisabled] = useState('disabled');
     let renderInfo = null;
-    console.log(validateData, { email, phone, name, photo })
 
     const loadImage = (e) => {
         const file = e.target.files[0];
@@ -27,7 +26,6 @@ export default function RegistrationForm(props) {
             img.onload = (e) => {
                 const widthImage = e.target.width;
                 const heightImage = e.target.height;
-                console.log(widthImage, heightImage)
                 if (widthImage === 70 && heightImage === 70) {
                     setValidateData((prev) => ({ ...prev, photo: file }));
                     setErrorValidate((prevValidate) => ({ ...prevValidate, photo: false }))
@@ -72,14 +70,14 @@ export default function RegistrationForm(props) {
         e.preventDefault();
         if (!email && !phone && !photo && !name) {
             const { url, options } = setOptions({ token, action: "POST/users", data: validateData });
-            fetchData({ url, ...options })
+            request({ url, ...options })
                 .then(() => setRegistraion({update: true, problemRegistration: false}))
                 .catch(() => setRegistraion({update: false, problemRegistration: true}))
         }
     }
     useEffect(() => {
         if (token) {
-            fetchData({ url, ...options })
+            request({ url, ...options })
                 .then(resp => {
                     const positions = resp.positions;
                     setLoad(false);

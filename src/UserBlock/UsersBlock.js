@@ -10,8 +10,6 @@ export default function UsersBlock(props) {
     const currentInfo = !!users.length ?
         users.map(el => <Card key={el.id} { ...el } />) :
         <Spinner/>;
-    console.log('users', users)
-    console.log(currentInfo)
     const loadUsers = () => { 
         setPages((prevPages) => { 
             if ((prevPages + 1) <= totalPages) { 
