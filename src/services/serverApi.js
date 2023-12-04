@@ -19,11 +19,11 @@ export default function setOptions({ token, data = {}, action, pages, update = f
             
             case 'POST/users':
                 const formData = new FormData();
-                console.log(data)
+               
                 for (let key in data) {
                     formData.append(key, data[key])
                 }
-                console.log('formData get all', formData.getAll('photo'))
+             
                 return {
                     url: postUsers,
                    options: {
