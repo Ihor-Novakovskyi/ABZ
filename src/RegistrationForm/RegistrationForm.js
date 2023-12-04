@@ -3,7 +3,6 @@ import request from '../services/request';
 import Spinner from '../Spinner/Loading';
 import { useState, useEffect } from 'react';
 import setOptions from '../services/serverApi';
-import regularExpression from './regularExp';
 import Button from '../Button/Button';
 import validation from './validation';
 export default function RegistrationForm(props) {
